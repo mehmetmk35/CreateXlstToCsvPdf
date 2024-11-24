@@ -640,8 +640,12 @@ namespace WinFormsApp1
                             + $"{NameOperation.CharacterRegulatory(prosesBilgileri.sarjNo.ToString())}";
 
             string pathOrContainerName = Configuration.Path;
-            string ifExistsPath = Path.Combine(pathOrContainerName, fileName);
+            string ifExistsPathDateTime = Path.Combine(pathOrContainerName, DateTime.Now.ToString("yyy-MM-dd"));
+            string ifExistsPath = Path.Combine(ifExistsPathDateTime, fileName);
             // Klosor Kontrol
+            if (!Directory.Exists(ifExistsPathDateTime))
+                Directory.CreateDirectory(ifExistsPathDateTime);
+
             if (!Directory.Exists(ifExistsPath))
                 Directory.CreateDirectory(ifExistsPath);
 
